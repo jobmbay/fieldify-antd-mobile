@@ -1,0 +1,22 @@
+{
+  "name": "@fieldify/antd-mobile-example",
+  "displayName": "AntdMobile Example",
+  "expo": {
+    "name": "@fieldify/antd-mobile-example",
+    "slug": "fieldify-antd-mobile-example",
+    "description": "Example app for @fieldify/antd-mobile",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
