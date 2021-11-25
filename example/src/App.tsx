@@ -92,10 +92,10 @@ export default function App() {
                   console.log(tab, index)
                 }}>
                   <View>
-                    <Text>Content of First Tab</Text>
+                    <Text>Content of First Tab.</Text>
                   </View>
                   <View>
-                    <Text>Content of Second Tab</Text>
+                    <Text>Content of Second Tab.</Text>
                   </View>
                 </Tabs>
               </View>
