@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { ScrollView, Text, TouchableWithoutFeedback, View, StyleSheet, Image } from 'react-native';
 import * as Linking from 'expo-linking';
-import { Button, Flex, WhiteSpace, WingBlank } from '@ant-design/react-native';
+import { Button, Flex, WhiteSpace, WingBlank, Accordion, Tabs } from '@ant-design/react-native';
 // import { multiply } from '@fieldify/antd-mobile';
+const tabs = [
+  { title: 'Visual Editor' },
+  { title: 'JSON Schema' }
+];
 export default function App() {
   // const [result, setResult] = React.useState<number | undefined>();
 
   const [isBuilderShown, setIsBuilderShown] = useState(true);
   const [isFormShown, setIsFormShown] = useState(true);
-  const [isRenderShown, setIsRenderShown] = useState(false);
+  const [isRenderShown, setIsRenderShown] = useState(true);
 
   React.useEffect(() => {
     // multiply(3, 7).then(setResult);
   }, []);
+
+  const [activeSections, setActiveSections] = useState([2, 0]);
+  const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <View style={styles.container}>
@@ -70,6 +77,44 @@ export default function App() {
         <WhiteSpace />
         <WhiteSpace />
         <WhiteSpace />
+        <Accordion
+          onChange={(activeSections) => {
+            setActiveSections(activeSections)
+          }}
+          activeSections={activeSections}
+        >
+          {
+            isBuilderShown && 
+            <Accordion.Panel header="Pass #1 - Building">
+              <View style={{ flex: 1, backgroundColor: 'red', height: '50%' }}>
+                <Tabs style={{ flex: 1 }} tabs={tabs} initialPage={0} onChange={(tab, index) => {
+                  setCurrentTab(index);
+                  console.log(tab, index)
+                }}>
+                  <View>
+                    <Text>Content of First Tab</Text>
+                  </View>
+                  <View>
+                    <Text>Content of Second Tab</Text>
+                  </View>
+                </Tabs>
+              </View>
+            </Accordion.Panel>
+          }
+          {
+            isFormShown &&
+            <Accordion.Panel header="Pass #2 - Filling Form">
+              this is panel content2 or other
+            </Accordion.Panel>
+          }
+          {
+            isRenderShown && 
+            <Accordion.Panel header="Pass #3 - Final result">
+              Text text text text text text text text text text text text text
+              text text
+            </Accordion.Panel> 
+          }
+        </Accordion>
       </ScrollView>
     </View>
   );
